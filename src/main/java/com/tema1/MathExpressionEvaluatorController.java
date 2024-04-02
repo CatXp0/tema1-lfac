@@ -1,4 +1,4 @@
-package com.example.tema1;
+package com.tema1;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
