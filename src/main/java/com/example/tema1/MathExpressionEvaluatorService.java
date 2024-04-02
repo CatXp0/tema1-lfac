@@ -23,7 +23,7 @@ public class MathExpressionEvaluatorService {
     }
 
     public static double evaluateExpressionWithShuntingYardAlgorithm(String expression) {
-        // shunting yard algorithm will be used https://aquarchitect.github.io/swift-algorithm-club/Shunting%20Yard/
+        // folosim algoritmul shunting yard https://en.wikipedia.org/wiki/Shunting_yard_algorithm
         // convert to postfix notation
         Deque<String> postfix = infixToPostfix(expression);
         // evaluate postfix expression
