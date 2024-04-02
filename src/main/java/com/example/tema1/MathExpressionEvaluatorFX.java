@@ -20,7 +20,7 @@ public class MathExpressionEvaluatorFX extends Application {
 
         MathExpressionEvaluatorController controller = fxmlLoader.getController();
 
-        // problema 1
+        // problema 1 - citire din consola - rezultatul va fi afisat si intr-un text field din gui.
         startConsoleInputThread(controller);
     }
 
@@ -37,11 +37,16 @@ public class MathExpressionEvaluatorFX extends Application {
                 String input = scanner.nextLine();
 
                 if (MathExpressionEvaluatorService.validateExpression(input)) {
-                    double result = MathExpressionEvaluatorService.evaluateExpression(input);
+                    double resultExp4j = MathExpressionEvaluatorService.evaluateExpressionWithExp4j(input);
+                    double resultShuntingYard = MathExpressionEvaluatorService.evaluateExpressionWithShuntingYardAlgorithm(input);
 
-                    System.out.println(STR."Rezultatul expresiei \{input} este: \{result}");
+                    System.out.println(STR."Exp4j: Rezultatul expresiei \{input} este: \{resultExp4j}");
+                    System.out.println(STR."Shunting-yard alg: Rezultatul expresiei \{input} este: \{resultShuntingYard}");
 
-                    String output = STR."Introduceti o expresie matematica: \{input}\nRezultatul expresiei \{input} este: \{result}";
+                    String output = STR."Introduceti o expresie matematica: \{input}\n";
+                    output += STR."Exp4j: Rezultatul expresiei \{input} este: \{resultExp4j}\n";
+                    output += STR."Shunting-yard alg: Rezultatul expresiei \{input} este: \{resultShuntingYard}\n";
+
                     controller.appendTextToConsole(output);
                 } else {
                     System.out.println(STR."Expresia \{input} este invalida, incearca din nou");

@@ -9,7 +9,9 @@ import javafx.scene.control.TextField;
 
 public class MathExpressionEvaluatorController {
     @FXML
-    public Label resultLabel;
+    public Label exp4jResultLabel;
+    @FXML
+    public Label shuntingYardAlgResultLabel;
     @FXML
     public Button evaluateButton;
     @FXML
@@ -22,11 +24,13 @@ public class MathExpressionEvaluatorController {
         String expression = inputField.getText();
 
         if (MathExpressionEvaluatorService.validateExpression(expression)) {
-            double result = MathExpressionEvaluatorService.evaluateExpression(expression);
+            double resultExp4j = MathExpressionEvaluatorService.evaluateExpressionWithExp4j(expression);
+            double resultShuntingYardAlg = MathExpressionEvaluatorService.evaluateExpressionWithShuntingYardAlgorithm(expression);
 
-            resultLabel.setText(STR."Rezultat: \{result}");
+            exp4jResultLabel.setText(STR."Rezultat Exp4j: \{resultExp4j}");
+            shuntingYardAlgResultLabel.setText(STR."Rezultat Shunting-Yard Alg: \{resultShuntingYardAlg}");
         } else {
-            resultLabel.setText("Expresia este invalida");
+            exp4jResultLabel.setText("Expresia este invalida");
         }
     }
 

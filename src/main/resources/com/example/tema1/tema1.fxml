@@ -16,7 +16,8 @@
     <Label>Introduceti o expresie matematica:</Label>
     <TextField fx:id="inputField" promptText="use ^ for power and sqrt() for square root" />
     <Button fx:id="evaluateButton" text="Evalueaza" onAction="#onEvaluateButtonClick" />
-    <Label fx:id="resultLabel" text="Rezultat:" />
+    <Label fx:id="exp4jResultLabel" text="Rezultat Exp4j:" />
+    <Label fx:id="shuntingYardAlgResultLabel" text="Rezultat Shunting-Yard Alg:" />
 
     <TextArea fx:id="consoleOutputArea" prefHeight="200" prefWidth="300" />
 </VBox>
