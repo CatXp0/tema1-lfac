@@ -16,7 +16,7 @@ public class MathExpressionEvaluatorService {
 
             return builtExpression.evaluate();
         } catch (Exception exception) {
-            System.err.println(STR."Error encountered while evaluating expression - \{exception.getMessage()}");
+            System.err.println(STR."Error encountered while evaluating expression with exp4j- \{exception.getMessage()}");
 
             return Double.NaN;
         }
@@ -24,10 +24,17 @@ public class MathExpressionEvaluatorService {
 
     public static double evaluateExpressionWithShuntingYardAlgorithm(String expression) {
         // folosim algoritmul shunting yard https://en.wikipedia.org/wiki/Shunting_yard_algorithm
-        // convert to postfix notation
-        Deque<String> postfix = infixToPostfix(expression);
-        // evaluate postfix expression
-        return evaluatePostfix(postfix);
+
+        try {
+            // convert to postfix notation
+            Deque<String> postfix = infixToPostfix(expression);
+            // evaluate postfix expression
+            return evaluatePostfix(postfix);
+        } catch (Exception exception) {
+            System.err.println(STR."Error encountered while evaluating expression with shunting yard alg - \{exception.getMessage()}");
+
+            return Double.NaN;
+        }
     }
 
     private static Deque<String> infixToPostfix(String expression) {
